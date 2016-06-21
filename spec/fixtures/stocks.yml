@@ -1,0 +1,18 @@
+groupon_stock:
+  symbol: GRPN
+  name: Groupon Inc.
+  last_sale: 325
+  market_cap: $1.89B
+  ipo_year: 2011
+  sector: Technology
+  industry: Advertising
+  summary_quote: http://www.nasdaq.com/symbol/grpn
+tesla_stock:
+  symbol: TSLA
+  name:  Tesla Motors Inc.
+  last_sale: 217.7
+  market_cap: $29.16B
+  ipo_year: 2010
+  sector: Capital Goods
+  industry: Auto Manufacturing
+  summary_quote: http://www.nasdaq.com/symbol/tsla

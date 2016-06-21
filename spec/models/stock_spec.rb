@@ -4,14 +4,14 @@ describe Stock do
 
   let(:stock) do
     Stock.new(
-      symbol: "GRPN",
-      name: "Groupon Inc.",
-      last_sale: 325,
-      market_cap: "$1.89B",
-      ipo_year: "2011",
+      symbol: "MSFT",
+      name: "Microsoft Corporation",
+      last_sale: 5013,
+      market_cap: "$394.05B",
+      ipo_year: "1986",
       sector: "Technology",
-      industry: "Advertising",
-      summary_quote: "http://www.nasdaq.com/symbol/grpn"
+      industry: "Computer Software: Prepackaged Software",
+      summary_quote: "http://www.nasdaq.com/symbol/msft"
     )
   end
 
@@ -21,18 +21,17 @@ describe Stock do
       expect do
         stock.save!
       end.to_not raise_error
-      expect(stock.symbol).to eq("GRPN")
-      expect(stock.name).to eq("Groupon Inc.")
-      expect(stock.last_sale).to eq(325)
-      expect(stock.market_cap).to eq("$1.89B")
-      expect(stock.ipo_year).to eq("2011")
+      expect(stock.symbol).to eq("MSFT")
+      expect(stock.name).to eq("Microsoft Corporation")
+      expect(stock.last_sale).to eq(5013)
+      expect(stock.market_cap).to eq("$394.05B")
+      expect(stock.ipo_year).to eq("1986")
       expect(stock.sector).to eq("Technology")
-      expect(stock.industry).to eq("Advertising")
-      expect(stock.summary_quote).to eq("http://www.nasdaq.com/symbol/grpn")
+      expect(stock.industry).to eq("Computer Software: Prepackaged Software")
+      expect(stock.summary_quote).to eq("http://www.nasdaq.com/symbol/msft")
     end
 
     context "for required fields" do
-
       it "raises an error if symbol is missing" do
         stock.symbol = nil
         expect do
@@ -50,11 +49,9 @@ describe Stock do
           duplicate_stock.save!
         end.to raise_error("Validation failed: Symbol has already been taken")
       end
-
     end
 
     context "for non-required fields" do
-
       [
         "name",
         "last_sale",
@@ -71,7 +68,6 @@ describe Stock do
           end.to_not raise_error
         end
       end
-
     end
 
   end
