@@ -14,6 +14,10 @@ describe "exchanges:import_stock" do
     StockApi::Application.load_tasks
   end
 
+  before(:each) do
+    Stock.delete_all
+  end
+
   def create_and_read_csv_stock_data_file(specified_file_path = nil)
     if specified_file_path.nil?
       # write csv file
@@ -105,7 +109,7 @@ describe "exchanges:import_stock" do
 
       expect do
         Rake::Task[task_name].reenable
-        Rake::Task[task_name].invoke([csv_file_path])
+        Rake::Task[task_name].invoke([file_path])
       end.to change{Stock.count}.by(expected_stock_size)
     end
   end
