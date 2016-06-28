@@ -1,28 +1,62 @@
-== README
+== Stock API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=== Setup
 
-Things you may want to cover:
+<tt>bin/setup</tt>
 
-* Ruby version
+=== Start server
 
-* System dependencies
+<tt>bin/rails server</tt>
 
-* Configuration
+=== Running tests
 
-* Database creation
+<tt>bin/rake</tt>
 
-* Database initialization
+=== Import Stock Data
 
-* How to run the test suite
+* To import AMEX, NASDAQ & NYSE stock data from CSV into the DB by running the following command:
 
-* Services (job queues, cache servers, search engines, etc.)
+<tt>bin/rake exchanges:import_all</tt>
 
-* Deployment instructions
+* To import specific CSV file with stock data, run the following command:
 
-* ...
+<tt>bin/rake exchanges:import_stock</tt>
+
+* <tt>file_path</tt> should specify the path of the file to be imported
+
+=== Search URL param for '/stocks' API
+
+* <tt>search</tt> - it allows you to search for specific stock by company name
+
+<tt>http://localhost:3000/stocks?search=Apple</tt>
+
+=== Pagination URL params for '/stocks' API
+
+* <tt>limit</tt> - it sets a limit on the number of stock results returned by the API
+
+<tt>http://localhost:3000/stocks?limit=5</tt>
+
+* <tt>offset</tt> - it gives you the ability to set an offset for the number of returned results returned by the API
+
+<tt>http://localhost:3000/stocks?offset=20</tt>
+
+=== Example of all available URL params for '/stocks' API
+
+* Searching for Apple with no offset and limit returns 2 stock results, in which we can apply limit and offset to find Apple stock data.
+
+<tt>http://localhost:3000/stocks?search=Apple&limit=1&offset=1</tt>
+
+* The response from the above API call includes 'Apple' stock data:
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+[
+  {
+    "symbol": "AAPL",
+    "name": "Apple Inc.",
+    "close": 92.04,
+    "open": 93.01,
+    "high": 93.05,
+    "low": 91.5,
+    "average": 92.4
+  }
+]
